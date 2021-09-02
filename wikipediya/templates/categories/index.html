@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Categories
+{% endblock %}
+
+{% block content %}
+    {% for category in categories %}
+        <div class="card mb-5">
+            <div class="card-header">
+                <h1>{{category.title}}</h1>
+            </div>
+        <div class="card-body">
+            <a href="{{category.get_absolute_url}}" class="btn btn-primary">Посмотреть</a>
+        </div>
+    </div>
+    {% endfor %}
+{% endblock %}
