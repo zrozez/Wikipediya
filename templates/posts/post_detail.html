@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Post-detail
+{% endblock %}
+
+{% block content %}
+
+    <h2>{{post.title}}</h2>
+    <h5>{{post.body}}</h5>
+{% if request.user.is_authenticated %}
+    <form action="" method="POST">
+        {{ comment_form.as_p }}
+        {%csrf_token%}
+        <p><input type="submit" value="Send"></p>
+    </form>
+{% endif %}
+{% if not request.user.is_authenticated %}
+<h3>Only authenticated users can leave a message</h3>
+<a href="{% url 'login_url'%}" class="btn btn-primary">Вход</a>
+
+<!-- {% endif %}
+    <h4>Комментарии</h4>
+    {% for i in comments%}
+    <div>{{i.name}}</div>
+    <div>{{i.email}}</div>
+    <div>{{i.body}}</div>
+    <div>{{i.created}}</div>
+    <div>-------------------------------------</div>
+    {% endfor %}
+{%endblock%} -->
